@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Team15_FinalProject.Models.Checking>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Checking</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckingBalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecureNumber)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckingName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckingBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.SecureNumber)
+        </th>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CheckingID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CheckingID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CheckingID })
+        </td>
+    </tr>
+}
+
+</table>

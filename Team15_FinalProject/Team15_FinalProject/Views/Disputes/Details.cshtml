@@ -1,0 +1,66 @@
+﻿@model Team15_FinalProject.Models.Dispute
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Dispute</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            First Name
+        </dt>
+
+        <dd>
+            @ViewBag.FName
+        </dd>
+
+        <dt>
+            Last Name
+        </dt>
+
+        <dd>
+            @ViewBag.LName
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @ViewBag.Email
+        </dd>
+
+        <dt>
+            Transaction Number
+        </dt>
+
+        <dd>
+            @ViewBag.Number
+        </dd>
+
+        <dt>
+            Transaction Amount
+        </dt>
+
+        <dd>
+            @ViewBag.Amount
+        </dd>
+
+        <dt>
+            Correct Amount
+        </dt>
+
+        <dd>
+            @ViewBag.Correct
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DisputeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

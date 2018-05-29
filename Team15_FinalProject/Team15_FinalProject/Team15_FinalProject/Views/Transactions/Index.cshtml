@@ -1,0 +1,166 @@
+﻿@model IEnumerable<Team15_FinalProject.Models.Transaction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.Show</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.TransactionID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@using (Html.BeginForm("SearchResults", "Transactions", FormMethod.Get))
+{
+    <p class="form-group">
+        Description: @Html.TextBox("DescString", null, new { @class = "form-control" })<br />
+
+        Transaction Type:
+        @Html.DropDownList("SelectedType", (SelectList)ViewBag.AllTransactionTypes, new { @class = "form-control" })
+
+        Transaction Amount:
+        <div class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedAmount", SearchAmount.All, true, new { @class = "form-check-input" }) All Amounts
+                </label>
+
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedAmount", SearchAmount.ZeroToOne, new { @class = "form-check-input" }) 0 - 100
+                </label>
+
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedAmount", SearchAmount.OnetoTwo, new { @class = "form-check-input" }) 100 - 200
+                </label>
+
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedAmount", SearchAmount.TwoToThree, new { @class = "form-check-input" }) 200 - 300
+                </label>
+
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedAmount", SearchAmount.ThreePlus, new { @class = "form-check-input" }) 300+
+                </label>
+
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedAmount", SearchAmount.Custom, new { @class = "form-check-input" }) Custom
+                </label>
+            </div>
+            Minimum: @Html.TextBox("MinAmount", null, new { @class = "form-control" }) <div class="text-danger">@ViewBag.MinMessage</div>
+            Maximum: @Html.TextBox("MaxAmount", null, new { @class = "form-control" }) <div class="text-danger">@ViewBag.MaxMessage</div>
+            <div class="form-check">
+            </div>
+        </div>
+
+        Transaction Number: @Html.TextBox("NumberString", null, new { @class = "form-control" })<br />
+
+        Transaction Date:
+        <div class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedDate", SearchDate.AllAvailable, true, new { @class = "form-check-input" }) All Dates
+                </label>
+
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedDate", SearchDate.Last15, new { @class = "form-check-input" }) Last 15 Days
+                </label>
+
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedDate", SearchDate.Last30, new { @class = "form-check-input" }) Last 30 Days
+                </label>
+
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedDate", SearchDate.Last60, new { @class = "form-check-input" }) Last 60 Days
+                </label>
+
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedDate", SearchDate.Custom, new { @class = "form-check-input" }) Custom
+                </label>
+            </div>
+            End Days Before: @Html.TextBox("Early", null, new { @class = "form-control" }) <div class="text-danger">@ViewBag.EarlyMessage</div>
+            Begin Days Before: @Html.TextBox("Late", null, new { @class = "form-control" }) <div class="text-danger">@ViewBag.LateMessage</div>
+            <div class="form-check">
+            </div>
+        </div>
+
+        Sort Criteria:
+        <div class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedSort", Sort.NumAsc, true, new { @class = "form-check-input" }) Number Ascending
+                </label>
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedSort", Sort.TypeAsc, new { @class = "form-check-input" }) Type Ascending
+                </label>
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedSort", Sort.DescAsc, new { @class = "form-check-input" }) Description Ascending
+                </label>
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedSort", Sort.AmountAsc, new { @class = "form-check-input" }) Amount Ascending
+                </label>
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedSort", Sort.DateAsc, new { @class = "form-check-input" }) Date Ascending
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedSort", Sort.NumDesc, new { @class = "form-check-input" })  Number Descending
+                </label>
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedSort", Sort.TypeDesc, new { @class = "form-check-input" }) Type Descending
+                </label>
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedSort", Sort.DescDesc, new { @class = "form-check-input" })  Description Descending
+                </label>
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedSort", Sort.AmountDesc, new { @class = "form-check-input" }) Amount Descending
+                </label>
+                <label class="form-check-label">
+                    @Html.RadioButton("SelectedSort", Sort.DateDesc, new { @class = "form-check-input" }) Date Descending
+                </label>
+            </div>
+        </div>
+
+        <input type="submit" value="Search" class="btn btn-default" />
+    </p>
+}

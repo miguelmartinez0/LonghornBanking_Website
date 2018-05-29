@@ -1,0 +1,181 @@
+﻿@model IEnumerable<Team15_FinalProject.Models.HomeViewModel>
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Longhorn Bank Home Page</h2>
+
+@using (Html.BeginForm())
+
+{
+    <p class="form-group">
+        @Html.ActionLink("Create Checking Account", "Create", "Checkings", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Create Savings Account", "Create", "Savings", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Create IRA Account", "Create", "IRAs", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Create Stock Account", "Create", "Stocks", null, new { @class = "btn btn-default" })
+
+     </p>
+}
+
+<h2>Checking</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Account Name
+        </th>
+        <th>
+            Account Number
+        </th>
+        <th>
+            Account Balance
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        foreach (var x in item.checking)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => x.CheckingName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.SecureNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.CheckingBalance)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Checkings", new { id = x.CheckingID }, null)
+                </td>
+            </tr>
+
+        }
+    }
+
+</table>
+
+<h2>Savings</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Account Name
+        </th>
+        <th>
+            Account Number
+        </th>
+        <th>
+            Account Balance
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        foreach (var x in item.saving)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => x.SavingName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.SecureNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.SavingBalance)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Savings", new { id = x.SavingID }, null)
+                </td>
+            </tr>
+
+        }
+    }
+
+</table>
+
+<h2>IRAs</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Account Name
+        </th>
+        <th>
+            Account Number
+        </th>
+        <th>
+            Account Balance
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ira.IRAName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ira.SecureNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ira.IRABalance)
+            </td>
+            
+           @* <td>
+                @Html.ActionLink("Edit", "Edit", "IRAs", new { id = item.ira.IRAID }, null)
+            </td>*@
+        </tr>
+
+        }
+
+    </table>
+
+    <h2>Stocks</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                Account Name
+            </th>
+            <th>
+                Account Number
+            </th>
+            <th>
+                Account Balance
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stock.StockName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stock.SecureNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stock.StockBalance)
+                </td>
+                @*<td>
+                     @Html.ActionLink("Edit", "Edit", "Stocks", new { id = item.stock.StockID }, null)
+            </td>*@
+        </tr>
+
+    }
+
+</table>
+
+@using (Html.BeginForm())
+
+{
+    <p class="form-group">
+        @Html.ActionLink("Make A Deposit", "Deposit", "Transactions", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Make A Withdrawal", "Withdrawal", "Transactions", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Make A Transfer", "Transfer", "Transactions", null, new { @class = "btn btn-default" })
+    </p>
+}

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Manager Portal";
+}
+
+<h2>Manager Portal</h2>
+
+@Html.ActionLink("Dispute Portal", "Index", "Disputes", null, new { @class = "btn btn-default" })
+
+@Html.ActionLink("Manager Employees", "ManageEmployee", "Manager", null, new { @class = "btn btn-default" })
+
+@Html.ActionLink("Process Stock Portfolios", "AddPortfolioBonus", "Manager", null, new { @class = "btn btn-default" })
+
+@Html.ActionLink("Add New Stock", "Create", "StockQuote", null, new { @class = "btn btn-default" })

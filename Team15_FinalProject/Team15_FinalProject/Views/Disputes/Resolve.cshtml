@@ -1,0 +1,59 @@
+﻿@model Team15_FinalProject.Models.Dispute
+
+@{
+    ViewBag.Title = "Resolve";
+}
+
+<h2>Resolve</h2>
+
+<div>
+    <h4>Dispute</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisputeComment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisputeComment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorrectAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorrectAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeleteTransaction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeleteTransaction)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@using (Html.BeginForm())
+
+{
+    <p class="form-group">
+        @Html.ActionLink("Accept", "Accept", "Disputes", new { id = Model.DisputeID }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Reject", "Reject", "Disputes", new { id = Model.DisputeID }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Adjust", "Adjust", "Disputes", new { id = Model.DisputeID }, new { @class = "btn btn-default" })
+    </p>
+}

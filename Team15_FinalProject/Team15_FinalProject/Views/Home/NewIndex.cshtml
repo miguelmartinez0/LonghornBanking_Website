@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Welcome to Longhorn Bank! Apply for an account today!</h2>
+
+@using (Html.BeginForm())
+
+{
+    <p class="form-group">
+        @Html.ActionLink("Create Checking Account", "Create", "Checkings", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Create Savings Account", "Create", "Savings", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Create IRA Account", "Create", "IRAs", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Create Stock Account", "Create", "Stocks", null, new { @class = "btn btn-default" })
+
+    </p>
+}

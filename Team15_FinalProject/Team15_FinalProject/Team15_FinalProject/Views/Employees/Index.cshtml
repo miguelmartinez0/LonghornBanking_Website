@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employee Home Page</h2>
+
+@using (Html.BeginForm())
+
+{
+    <p class="form-group">
+        @Html.ActionLink("Customers", "Index", "Customers", null, new { @class = "btn btn-default" })
+    </p>
+}

@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Team15_FinalProject.Models.StockViewModel>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StockViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal"></dl>
+    <dl class="dl-horizontal">
+        @foreach (var item in Model)
+        {
+        <dt>
+            @Html.DisplayNameFor(model => model.stock.StockName)
+        </dt>
+
+        <dd>
+            StockName
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stock.StockBalance)
+        </dt>
+
+        <dd>
+          StockBalance
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stock.Status)
+        </dt>
+
+        <dd>
+           Status
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner.FName)
+        </dt>
+
+        <dd>
+            FName
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner.LName)
+        </dt>
+
+        <dd>
+            LName
+        </dd>
+        }
+    </dl>
+</div>
+
+    <h4>StockViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+    @foreach (var item in Model)
+    {
+        foreach (var x in item.portfolio)
+        {
+            <dt>
+                TickerSymbol
+            </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => x.TickerSymbol)
+                </dd>
+
+                <dt>
+                   StockPrice
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => x.StockPrice)
+                </dd>
+
+                <dt>
+                   StockType
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => x.StockType)
+                </dd>
+
+                <dt>
+                    Shares
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => x.Shares)
+                </dd>
+        }
+    }
+    </d1>
+</div>
+
+
+<p>
+    @Html.ActionLink("Back to List", "Index", "Stock")
+</p>
+
+        }

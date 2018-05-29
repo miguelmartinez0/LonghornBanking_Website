@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "DisputeSuccess";
+}
+
+<h2>@ViewBag.ConfirmationMessage</h2>
+
+@using (Html.BeginForm())
+
+{
+    <p class="form-group">
+        @Html.ActionLink("Return to Home", "Index", "Home", null, new { @class = "btn btn-default" })
+    </p>
+}

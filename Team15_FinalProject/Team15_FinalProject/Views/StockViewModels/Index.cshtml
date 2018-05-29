@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Team15_FinalProject.Models.StockViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Stock", null, new { @class = "btn btn-default" }))*
+    @Html.ActionLink("Buy Stocks", "Index", "StockQuote", null, new { @class = "btn btn-default" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.stock.StockName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock.StockBalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock.SecureNumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.stock.StockName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stock.StockBalance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stock.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stock.SecureNumber)
+            </td>
+        </tr>
+    }
+
+</table>
+<table class="table">
+    <tr>
+        <th>
+            Ticker Symbol
+        </th>
+        <th>
+            Stock Price
+        </th>
+        <th>
+            Stock Type
+        </th>
+        <th>
+            Shares
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        foreach (var x in item.portfolio)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => x.TickerSymbol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.StockPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.StockType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => x.Shares)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = x.PortfolioID }) |
+                    @Html.ActionLink("Details", "Details", new { id = x.PortfolioID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = x.PortfolioID })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+

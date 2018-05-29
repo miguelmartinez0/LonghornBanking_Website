@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Team15_FinalProject.Models.Dispute>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Resolve Disputes", "Manager", FormMethod.Get))
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisputeComment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CorrectAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeleteTransaction)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisputeComment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CorrectAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeleteTransaction)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DisputeID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+@using (Html.BeginForm())
+
+{
+    <p class="form-group">
+        @Html.ActionLink("Show Pending Disputes", "Index", "Disputes", null, new { @class = "btn btn-default" })
+    </p>
+}

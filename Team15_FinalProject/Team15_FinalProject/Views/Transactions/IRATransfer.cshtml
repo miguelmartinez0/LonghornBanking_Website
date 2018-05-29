@@ -1,0 +1,61 @@
+﻿@model Team15_FinalProject.Models.TransferViewModel
+@{
+    ViewBag.Title = "IRATransfer";
+}
+
+<h2>Confirmation</h2>
+
+@ViewBag.Overdraft
+@ViewBag.Message
+
+<div>
+    <h4>Please comfirm the transfer details.</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OriginID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OriginID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DestinationID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DestinationID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Confirm Transfer - include fee in transfer", "IRATransferInclude", "Transactions", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Confirm Transfer - charge fee separately", "IRATransferExclude", "Transactions", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Restart Transfer", "Transfer", "Transactions", null, new { @class = "btn btn-default" })
+</p>

@@ -1,0 +1,123 @@
+﻿@model Team15_FinalProject.Models.Saving
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Savings account details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SavingName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavingName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavingBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavingBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner.FName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner.FName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner.LName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner.LName)
+        </dd>
+
+    </dl>
+</div>
+
+<h4>Transactions</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            Transaction Description
+        </th>
+        <th>
+            Transaction Type
+        </th>
+        <th>
+            Amount
+        </th>
+        <th>
+            Date
+        </th>
+    </tr>
+
+    @foreach (var item in ViewBag.transactions)
+    {
+        <tr>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.TransactionType
+            </td>
+            <td>
+                @item.Amount
+            </td>
+            <th>
+                @item.Date
+            </th>
+        </tr>
+    }
+
+</table>
+
+<h4>Disputes</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            Dispute Status
+        </th>
+        <th>
+            Comment
+        </th>
+    </tr>
+
+    @foreach (var item in ViewBag.disputes)
+    {
+        <tr>
+            <td>
+                @item.Status
+            </td>
+            <td>
+                @item.DisputeComment
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "CustomerEdit", new { id = Model.SavingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

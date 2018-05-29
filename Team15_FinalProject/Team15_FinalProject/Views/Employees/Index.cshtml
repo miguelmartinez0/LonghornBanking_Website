@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employee Home Page</h2>
+
+@using (Html.BeginForm())
+
+{
+    <p class="form-group">
+        @Html.ActionLink("Edit Employee Info", "EmployeeEdit", "Customers", new { id = User.Identity.GetUserId()}, new { @class = "btn btn-default" })
+    </p>
+    <p class="form-group">
+        @Html.ActionLink("Customers", "Index", "Customers", null, new { @class = "btn btn-default" })
+    </p>
+    <p class="form-group">
+        @Html.ActionLink("Transaction Search", "EmployeeIndex", "Transactions", null, new { @class = "btn btn-default" })
+    </p>
+}

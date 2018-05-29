@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Team15_FinalProject.Models.IRA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IRAName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IRABalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecureNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IRAName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IRABalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecureNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IRAID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IRAID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IRAID })
+        </td>
+    </tr>
+}
+
+</table>

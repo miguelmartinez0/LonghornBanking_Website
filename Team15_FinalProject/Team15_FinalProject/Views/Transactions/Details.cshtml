@@ -1,0 +1,110 @@
+﻿@model Team15_FinalProject.Models.Transaction
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<h3>
+    @ViewBag.Message
+</h3>
+
+<div>
+    <h4>Transaction details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+    </dl>
+</div>
+
+Dispute Comment: @ViewBag.DisputeComment
+
+<table class="table">
+    <tr>
+        <th>
+            Transaction Description
+        </th>
+        <th>
+            Transaction Type
+        </th>
+        <th>
+            Amount
+        </th>
+        <th>
+            Date
+        </th>
+    </tr>
+
+    @foreach (var item in ViewBag.transactions)
+    {
+        <tr>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.TransactionType
+            </td>
+            <td>
+                @item.Amount
+            </td>
+            <th>
+                @item.Date
+            </th>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Create Dispute", "Create", "Disputes", new { id = Model.TransactionID }, null)
+    @*Todo: Pass the TransactionID as a foreign key for the dispute page*@
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.TransactionID })*@
+    @Html.ActionLink("Back to List", "Index")
+</p>
